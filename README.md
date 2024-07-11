@@ -23,3 +23,14 @@ In some cases Element Internals is not enough to duplicate the output of the nat
 - get `axe-core` ready to add support for `.attachInternals()` within their tools
 - surface valuable best practices for custom element developers looking to deliver accessible content
 - discover places where cross browser compatibility of both `.attachInternal()` as well as native implementation of accessible patterns is lumpy or lacking
+
+### Non-goals
+
+- ?
+
+## To Do:
+- [ ] add templating to make adding support for a new pattern easier (see: https://plopjs.com/ or similar)
+- [ ] add documentation around scope (see: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles for `role` coverage, but where to include that, and more, in the repo? see also: https://github.com/dequelabs/axe-core/issues/4259#issuecomment-2223530771)
+- [ ] clarify testing scope for manual checking
+- [ ] add any additional "goals" or "non-goals"
+- [ ] catch up on the process to add accessibility testing to [WPTs](https://web-platform-tests.org/) to understand whether we can upstream any of our findings there
