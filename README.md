@@ -34,3 +34,4 @@ In some cases Element Internals is not enough to duplicate the output of the nat
 - [ ] clarify testing scope for manual checking
 - [ ] add any additional "goals" or "non-goals"
 - [ ] catch up on the process to add accessibility testing to [WPTs](https://web-platform-tests.org/) to understand whether we can upstream any of our findings there
+- [ ] Publish storybook and, possibly, test results to Netlify or similar (because free)
