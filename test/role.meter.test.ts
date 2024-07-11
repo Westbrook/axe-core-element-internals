@@ -3,10 +3,10 @@ import {
     a11ySnapshot,
 } from '@web/test-runner-commands';
 
-import { dom, domNegative, customElement } from '../stories/role.img.stories.js';
+import { dom, domNegative, customElement, Meter } from '../stories/role.meter.stories.js';
 
 
-describe('img', () => {
+describe('meter', () => {
 	it('is equivelent between DOM and custom elements', async () => {
 		const domTest = await fixture<HTMLImageElement>(dom());
 		const domTree = await a11ySnapshot({});
@@ -17,6 +17,9 @@ describe('img', () => {
 		domNegativeTest.remove();
 
 		const ceTest = await fixture<HTMLImageElement>(customElement());
+		const ceEl = ceTest.querySelector('axe-meter') as Meter;
+		expect(ceEl).is.instanceOf(Meter);
+		expect(ceEl.internals_.role).to.equal('meter');
 		const ceTree = await a11ySnapshot({});
 		ceTest.remove();
 

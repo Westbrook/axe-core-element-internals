@@ -20,8 +20,8 @@ describe('list and listitem', () => {
 		const ceTree = await a11ySnapshot({});
 		ceTest.remove();
 
-		console.log(JSON.stringify(domTree, null, '  '));
 		console.log(JSON.stringify(domNegativeTree, null, '  '));
+		console.log(JSON.stringify(domTree, null, '  '));
 		console.log(JSON.stringify(ceTree, null, '  '));
 
 		expect(domTree).to.deep.equal(ceTree);

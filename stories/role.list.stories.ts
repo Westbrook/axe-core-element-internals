@@ -2,7 +2,7 @@
 import { html, TemplateResult } from 'lit';
 
 export default {
-  title: 'role/img',
+  title: 'role/list',
 };
 
 class List extends HTMLElement {
