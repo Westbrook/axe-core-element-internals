@@ -18,16 +18,36 @@ class Image extends HTMLElement {
 customElements.define('axe-img', Image);
 
 export const dom = (): TemplateResult => html`
-	<img src="https://picsum.photos/id/870/200/300" alt="An image from picsum.photos" />
+	<div>
+		<img src="https://picsum.photos/id/870/200/300" alt="An image from picsum.photos" />
+		<div
+			role="img"
+			style="background: url(https://picsum.photos/id/870/200/300); width: 200px; height: 300px; display: inline-block;"
+			aria-label="An image from picsum.photos"
+		></div>
+	</div>
 `;
 
 export const domNegative = (): TemplateResult => html`
-	<img src="https://picsum.photos/id/870/200/300" alt="An image from picsum.photos: DOM" />
+	<div>
+		<img src="https://picsum.photos/id/870/200/300" alt="An image from picsum.photos: DOM" />
+		<div
+			role="img"
+			style="background: url(https://picsum.photos/id/870/200/300); width: 200px; height: 300px; display: inline-block;"
+			aria-label="An image from picsum.photos: DOM"
+		></div>
+	</div>
 `;
 
 export const customElement = (): TemplateResult => html`
-	<axe-img
-		style="background: url(https://picsum.photos/id/870/200/300); width: 200px; height: 300px; display: inline-block;"
-		aria-label="An image from picsum.photos"
-	></axe-img>
+	<div>
+		<axe-img
+			style="background: url(https://picsum.photos/id/870/200/300); width: 200px; height: 300px; display: inline-block;"
+			aria-label="An image from picsum.photos"
+		></axe-img>
+		<axe-img
+			style="background: url(https://picsum.photos/id/870/200/300); width: 200px; height: 300px; display: inline-block;"
+			aria-label="An image from picsum.photos"
+		></axe-img>
+	</div>
 `;
