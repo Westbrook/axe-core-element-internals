@@ -69,7 +69,8 @@
         {
           "ignorePackages": true
         }
-      ]
+      ],
+	  "no-undef": ["error", {}]
     }
   },
   "prettier": {
