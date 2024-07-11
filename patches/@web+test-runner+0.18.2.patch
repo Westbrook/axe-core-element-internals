@@ -1,0 +1,41 @@
+diff --git a/node_modules/@web/test-runner/dist/reporter/defaultReporter.js b/node_modules/@web/test-runner/dist/reporter/defaultReporter.js
+index 106ab98..c9f29af 100644
+--- a/node_modules/@web/test-runner/dist/reporter/defaultReporter.js
++++ b/node_modules/@web/test-runner/dist/reporter/defaultReporter.js
+@@ -7,7 +7,7 @@ function isBufferedLogger(logger) {
+     return (typeof logger.logBufferedMessages === 'function' &&
+         Array.isArray(logger.buffer));
+ }
+-function defaultReporter({ reportTestResults = true, reportTestProgress = true, } = {}) {
++function defaultReporter({ reportAtEnd = false, reportTestResults = true, reportTestProgress = true, } = {}) {
+     let args;
+     let favoriteBrowser;
+     return {
+@@ -29,10 +29,13 @@ function defaultReporter({ reportTestResults = true, reportTestProgress = true,
+             }
+             return (0, reportTestFileResults_js_1.reportTestFileResults)(logger, testFile, args.browserNames, favoriteBrowser, sessionsForTestFile);
+         },
+-        getTestProgress({ testRun, focusedTestFile, testCoverage }) {
++        getTestProgress({ sessions, testRun, focusedTestFile, testCoverage }) {
+             if (!reportTestProgress) {
+                 return [];
+             }
++			const done = sessions.every(session => session.status === 'FINISHED');
++			if (reportAtEnd && !done) return;
++
+             return (0, getTestProgress_js_1.getTestProgressReport)(args.config, {
+                 browsers: args.browsers,
+                 browserNames: args.browserNames,
+diff --git a/node_modules/@web/test-runner/src/reporter/defaultReporter.ts b/node_modules/@web/test-runner/src/reporter/defaultReporter.ts
+index 8294c7d..d24ff83 100644
+--- a/node_modules/@web/test-runner/src/reporter/defaultReporter.ts
++++ b/node_modules/@web/test-runner/src/reporter/defaultReporter.ts
+@@ -50,7 +50,7 @@ export function defaultReporter({
+       );
+     },
+ 
+-    getTestProgress({ testRun, focusedTestFile, testCoverage }) {
++    getTestProgress({ sessions, testRun, focusedTestFile, testCoverage }) {
+       if (!reportTestProgress) {
+         return [];
+       }

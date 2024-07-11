@@ -43,5 +43,5 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   // See documentation for all available options
   plugins: [
 	a11ySnapshotPlugin(),
-  ]
+  ],
 });
