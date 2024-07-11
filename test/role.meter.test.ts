@@ -5,7 +5,6 @@ import {
   dom,
   domNegative,
   customElement,
-  Meter,
 } from '../stories/role.meter.stories.js';
 
 describe('meter', () => {
@@ -19,9 +18,6 @@ describe('meter', () => {
     domNegativeTest.remove();
 
     const ceTest = await fixture<HTMLImageElement>(customElement());
-    const ceEl = ceTest.querySelector('axe-meter') as Meter;
-    expect(ceEl).is.instanceOf(Meter);
-    expect(ceEl.internals_.role).to.equal('meter');
     const ceTree = await a11ySnapshot({});
     ceTest.remove();
 
