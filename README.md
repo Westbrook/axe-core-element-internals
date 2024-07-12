@@ -26,7 +26,7 @@ In some cases Element Internals is not enough to duplicate the output of the nat
 
 ### Non-goals
 
-- ?
+- visual parity between native and `.attachInternals()` based implementations
 
 ## To Do:
 - [ ] add templating to make adding support for a new pattern easier (see: https://plopjs.com/ or similar)
