@@ -1,0 +1,36 @@
+import { html, TemplateResult } from 'lit';
+
+export default {
+  title: 'role/{{role}}',
+};
+
+class CustomRoleElement extends HTMLElement {
+  // eslint-disable-next-line no-undef
+  internals_!: ElementInternals;
+
+  constructor() {
+    super();
+    this.internals_ = this.attachInternals();
+    this.internals_.role = '{{role}}';
+  }
+}
+
+customElements.define('axe-{{role}}', CustomRoleElement);
+
+export const dom = (): TemplateResult => html`
+  <div>
+	Place positive DOM demo here.
+  </div>
+`;
+
+export const domNegative = (): TemplateResult => html`
+  <div>
+	Place negative DOM demo here.
+  </div>
+`;
+
+export const customElement = (): TemplateResult => html`
+  <div>
+	<axe-{{role}}></axe-{{role}}>
+  </div>
+`;

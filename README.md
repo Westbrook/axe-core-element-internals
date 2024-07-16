@@ -8,11 +8,14 @@ Once you've cloned the project and used NPM to install dependencies, you can run
 
 ### Adding a pattern
 
-When you're ready to add a pattern for test, start by outlining a story for the pattern. Currently, `role` is the only context under comparison, so find a `role` you want to test and create a new story for it in teh `stories` directory. Use the naming convention `role.${role under test}.stories.ts` so it is easier to see what's been covered to date in the file tree. While you are creating files, do the same for a test file following the naming contention `role.${role under test}.stories.ts` in the `test` directory.
+When you're ready to add a pattern for test, start by stamping new files for the `role` you are looking to add by running `npm run new`. You'll be asked for the reol you're looking to cover; if you've not already decided one, you can find a list [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles). This will create a new file in each of the `stories` and `test` directories pertaining to the role that you have chosen to cover. While the `test` file that is corrected should not need any edits, the file in the `story` directory will require additional input.
 
-Within the story file you have created, you may want to duplicate the contents of another story file to get started. Each story file currently exports a `dom` story that fully realizes the accessibility pattern in native DOM (sometimes that is built-in elements, like `<img>`, and other time that is use of the `role` and associated `aria-*` attributes), a `domNegative` story, which duplicates this with a specific label that sets it apart from the default output, and a `customElement` story rebuilding the pattern leveraging custom elements with Element Internals attached. Within the story file it self you can define the custom element that surfaces this pattern. _**NOTE: If your story consists of more than one sibling element, be sure to give it a wrapping element so that it can be appropriately cleaned up in the test files.**_
+With in the `role.${role}.stories.ts` file:
+1. find the text "Place positive DOM demo here." and replace it with a DOM only representation of the `role` you have selected. See a combination of existing stories, [MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles), and the [Aria APG](https://www.w3.org/WAI/ARIA/apg/) for assistance in doing this.
+2. find the text "Place negative DOM demo here." and replace it with the DOM only representation from above. However, change something in the example that will propagate to the accessibility tree (e.g. an `aria-label` attribute) to ensure that the AT will not be equal to that found in the above demonstration.
+3. find the `CustomRoleElement` class definition and ensure that it fully complied with the requirements of the `role` you have selected. Then fine the `customElement` export and customize the DOM that it returned to appropriate leverage those APIs. For more advanced patters, additional DOM and/or custom elements may be required to complete the comparison between the DOM-only and the `ElementInternals` implementations.
 
-Within the test file you have created, you may want to duplicate the contents of another test file to get started. In the case that your stories line up 100%, you should be able to get away with only changing the file from which you import that various stories under test and the name of the test `description`.
+_NOTE: The default stories are wrapped in `<div>` elements, but if, after edits, your story consists of more than one sibling element at the top level, be sure to give it a wrapping element so that it can be appropriately cleaned up in the test files._
 
 #### Customizing a story
 
@@ -29,7 +32,6 @@ In some cases Element Internals is not enough to duplicate the output of the nat
 - visual parity between native and `.attachInternals()` based implementations
 
 ## To Do:
-- [ ] add templating to make adding support for a new pattern easier (see: https://plopjs.com/ or similar)
 - [ ] add documentation around scope (see: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles for `role` coverage, but where to include that, and more, in the repo? see also: https://github.com/dequelabs/axe-core/issues/4259#issuecomment-2223530771)
 - [ ] clarify testing scope for manual checking
 - [ ] add any additional "goals" or "non-goals"
