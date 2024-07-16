@@ -11,6 +11,7 @@ describe('meter', () => {
   it('is equivelent between DOM and custom elements', async () => {
     const domTest = await fixture<HTMLImageElement>(dom());
     const domTree = await a11ySnapshot({});
+    await expect(domTest).to.be.accessible();
     domTest.remove();
 
     const domNegativeTest = await fixture<HTMLImageElement>(domNegative());
