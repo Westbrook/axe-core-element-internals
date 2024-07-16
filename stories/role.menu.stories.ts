@@ -103,6 +103,11 @@ export const domNegative = (): TemplateResult => html`
 
 export const customElement = (): TemplateResult => html`
   <div>
+    <style>
+      axe-menuitem {
+        display: list-item;
+      }
+    </style>
     <axe-menu aria-label="Test menu">
       <axe-group aria-label="Test group 1">
         <axe-menuitem>Inbox</axe-menuitem>
